@@ -55,8 +55,8 @@ void incluirVeiculo(vector<Veiculo> &veiculos){
     cout << "Cliente incluido com sucesso!" << endl;
 
     //system("pause");
-
 }
+
 void excluirCliente(vector<Cliente> &clientes){
     //system("clear||cls");
     
@@ -77,18 +77,40 @@ void excluirCliente(vector<Cliente> &clientes){
     cout << "Cliente nao encontrado!" << endl;
     //system("pause");
 }
+
+void excluirVeiculo(vector<Veiculo> &veiculos){
+    //system("clear||cls");
+
+    string placaExcluir;
+
+    cout << "Digite a placa do carro a ser exluido: ";
+    cin >> placaExcluir;
+
+    for(auto excluir = veiculos.begin(); excluir != veiculos.end(); excluir++){
+        if (excluir->placaVeiculo == placaExcluir){
+
+            veiculos.erase(excluir);
+            cout << "veiculo exluido com sucesso..." <<endl;
+
+            return;
+        }    
+    }
+    cout << "Veiculo nao encontrado!" << endl;
+    //system("pause");
+
+}
 void alterarCliente(vector<Cliente> &clientes){
     //system("clear||cls");
 
-    string alterarClientes;
+    string alterarCliente;
     bool clienteEncontrado = false;
 
     cout << "Digite o CPF do cliente a ser alterado: ";
-    cin >> alterarClientes;
+    cin >> alterarCliente;
 
     for (auto cliente = clientes.begin(); cliente != clientes.end(); cliente++){
        
-        if (cliente->CPF == alterarClientes){
+        if (cliente->CPF == alterarCliente){
             
             clienteEncontrado = true;
             cout << "Cliente encontrado. Deseja alterar o nome? (S/N): ";
@@ -231,7 +253,7 @@ void menuClientes (vector<Cliente> &clientes){
 
 }
 
-void menuVeiculo(vector<Veiculo> &veiclos) {
+void menuVeiculo(vector<Veiculo> &veiculos) {
     //system(clear||cls);
     
     while(true){
@@ -247,7 +269,7 @@ void menuVeiculo(vector<Veiculo> &veiclos) {
 
         switch(opcao_veiculo){
             case 1:
-            //incluirVeiculo(veiculos);
+            incluirVeiculo(veiculos);
                 break;
             case 2: 
             //excluirVeiculo(veiculos);
