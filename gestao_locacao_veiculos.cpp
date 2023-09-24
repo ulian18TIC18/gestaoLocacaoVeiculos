@@ -9,6 +9,10 @@ struct Cliente{
     string CPF, nome, DtNascimento, CNH;
 
 };
+struct Veiculo{
+    string renavan, placaVeiculo, datHoraRetira, datHoraEntrega, lojaRetirada;
+
+};
 
 void incluirCliente(vector<Cliente> &clientes){
     //system("clear||cls");
@@ -30,6 +34,29 @@ void incluirCliente(vector<Cliente> &clientes){
    // system("pause");
 }
 
+void incluirVeiculo(vector<Veiculo> &veiculos){
+    //system("clear||cls");
+
+    Veiculo veiculo;
+
+    cout << "Digite as informacoes do veiculo: ";
+    cout << "Digite o renavan do veiculo: ";
+    getline(cin >>ws, veiculo.renavan);
+    cout << "Digite a placa do veiculo: ";
+    getline(cin>>ws, veiculo.placaVeiculo);
+    cout << "Digite a data e a hora de retirada (prevista): ";
+    getline(cin>>ws, veiculo.datHoraRetira);
+    cout << "Digite o data e a hora de entrega (prevista): ";
+    getline(cin>>ws, veiculo.datHoraEntrega);
+    cout << "Digite a loja de retirada do veicuki: ";
+    getline(cin>>ws, veiculo.lojaRetirada);
+
+    veiculos.push_back(veiculo);
+    cout << "Cliente incluido com sucesso!" << endl;
+
+    //system("pause");
+
+}
 void excluirCliente(vector<Cliente> &clientes){
     //system("clear||cls");
     
@@ -204,17 +231,60 @@ void menuClientes (vector<Cliente> &clientes){
 
 }
 
+void menuVeiculo(vector<Veiculo> &veiclos) {
+    //system(clear||cls);
+    
+    while(true){
+        int opcao_veiculo;
 
+        cout << "-------Gestao de Veiculos-------" << endl;
+        cout << "1. Digite o Renavan: " << endl;
+        cout << "2. Placa do Veiculo: " << endl;
+        cout << "3. Data e hora da Retirada (Prevista): " << endl;
+        cout << "4. Data e hora da Entrega  (Prevista): " << endl;
+        cout << "5. Loja de Retira da Veiculo: " << endl;
+        cin >> opcao_veiculo;
+
+        switch(opcao_veiculo){
+            case 1:
+            //incluirVeiculo(veiculos);
+                break;
+            case 2: 
+            //excluirVeiculo(veiculos);
+                break;
+            case 3:
+            //alterarVeiculo(veiculos);
+                break;
+            case 4:
+            //listarVeiculo(veiculos);
+                break;
+            case 5:
+            //localizarVeiculos(veiculos);
+                break;
+            case 0:
+            cout << "Retornando ao menu principal..." << endl;
+                break;
+            default:
+            cout << "Opcao invalida. Tente novamente..." << endl;           
+                break;
+        }
+
+    //system("pause");
+    }
+
+}
 
 int main (){
 
 vector<Cliente> clientes;
+vector<Veiculo> veiculos;
 
     int operacoes;
     while (true){
         system("clear||cls");
         cout << "------ LOCAFINA S/A ------" << endl;
         cout << "1. Gestao de Clientes" << endl;
+        cout << "2. Gestao de Veiculos" << endl;
         cout << "0. Sair" << endl;
 
         cin >> operacoes;
@@ -223,7 +293,9 @@ vector<Cliente> clientes;
             case 1:
             menuClientes(clientes);
             break;
-
+            case 2:
+            menuVeiculo(veiculos);
+            break;
             case 0:
             cout << "Saindo do programa de cadastos..." << endl;
             break;
