@@ -39,7 +39,7 @@ void incluirVeiculo(vector<Veiculo> &veiculos){
 
     Veiculo veiculo;
 
-    cout << "Digite as informacoes do veiculo: ";
+    cout << "Inclua as informacoes do veiculo. " << endl;
     cout << "Digite o renavan do veiculo: ";
     getline(cin >>ws, veiculo.renavan);
     cout << "Digite a placa do veiculo: ";
@@ -48,7 +48,7 @@ void incluirVeiculo(vector<Veiculo> &veiculos){
     getline(cin>>ws, veiculo.datHoraRetira);
     cout << "Digite o data e a hora de entrega (prevista): ";
     getline(cin>>ws, veiculo.datHoraEntrega);
-    cout << "Digite a loja de retirada do veicuki: ";
+    cout << "Digite a loja de retirada do veicaaulo: ";
     getline(cin>>ws, veiculo.lojaRetirada);
 
     veiculos.push_back(veiculo);
@@ -99,6 +99,7 @@ void excluirVeiculo(vector<Veiculo> &veiculos){
     //system("pause");
 
 }
+
 void alterarCliente(vector<Cliente> &clientes){
     //system("clear||cls");
 
@@ -140,11 +141,11 @@ void alterarCliente(vector<Cliente> &clientes){
 
             if(opcao =='S' || opcao == 's'){
                 cout << "Digite a nova CNH: ";
-                getline(cin>> ws, cliente->CNH);
+                getline(cin >> ws, cliente->CNH);
 
             }
             cout << "Cliente alterado com sucesso!";
-            system("pause");
+            //system("pause");
 
             return;
         }
@@ -155,6 +156,68 @@ void alterarCliente(vector<Cliente> &clientes){
         //system("pause");
     }
 
+}
+void alterarVeiculo(vector<Veiculo> &veiculos){
+    //system("clear||cls");
+
+    string veicuiloAleterar;
+    bool placaEncontrada = false;
+
+    cout << "Digite a placa do veiculo: ";
+    cin >> veicuiloAleterar;
+
+    for (auto veiculo = veiculos.begin(); veiculo != veiculos.end(); veiculo++){
+        if(veiculo->placaVeiculo == veicuiloAleterar){
+        
+        placaEncontrada = true;
+        
+
+        cout << "Veiculo encontrado. Deseja alterar o renava? (S/N)";
+        char opcao;
+        cin >> opcao;
+            if(opcao == 'S' || opcao =='s'){
+                cout << "Digite o novo Renavan: ";
+                getline(cin>>ws, veiculo->renavan);
+
+            }
+        cout << "Deseja alterar a placa do veiculo? (S/N)";
+        cin >> opcao;
+            if(opcao == 'S' || opcao =='s'){
+                cout << "Digite a nova placa do veiculo: ";
+                getline(cin>>ws, veiculo->placaVeiculo);
+
+            }
+        cout << "Deseja alterar a data e a hora de retirada prevista? (S/N): ";
+        cin >> opcao;
+            if (opcao == 'S'|| opcao == 's'){
+                cout << "Digite a nova data e a hora de retirada: ";
+                getline(cin>>ws, veiculo->datHoraRetira);
+
+            }
+        cout << "Deseja alterar a data e a hora de entrega prevista? (S/N): ";
+        cin >> opcao;
+            if (opcao == 'S'||opcao == 's'){
+                cout <<"Digite a nova data e hora de entrega prevista: ";
+                getline(cin>>ws, veiculo->datHoraEntrega);
+
+            }
+        cout << "Deseja alterar o local de retirada do veiculo? (S/N)";
+        cin >> opcao;
+            if(opcao == 'S'||opcao == 's'){
+                cout << "Digite o novo local de retirada: ";
+                getline(cin>>ws, veiculo->lojaRetirada);
+
+            }
+        cout << "Cliente alterado com sucesso" << endl;
+        return;  
+
+        }
+    if(!placaEncontrada){
+        cout << "Veiculo nao encontrado no cadastro" << endl;
+    }
+
+    }
+    
 }
 void listarClientes(vector<Cliente> &clientes){
     //system("clear || cls");
@@ -260,11 +323,12 @@ void menuVeiculo(vector<Veiculo> &veiculos) {
         int opcao_veiculo;
 
         cout << "-------Gestao de Veiculos-------" << endl;
-        cout << "1. Digite o Renavan: " << endl;
-        cout << "2. Placa do Veiculo: " << endl;
-        cout << "3. Data e hora da Retirada (Prevista): " << endl;
-        cout << "4. Data e hora da Entrega  (Prevista): " << endl;
-        cout << "5. Loja de Retira da Veiculo: " << endl;
+        cout << "-Escolha uma das opcoes a seguir: " << endl;
+        cout << "1. Incluir novo veiculo: " << endl;
+        cout << "2. Excluir veiculo do sistema : " << endl;
+        cout << "3. Alterar informacoes do veiculo: " << endl;
+        cout << "4. Listar veiculos: " << endl;
+        cout << "5. Localizar situacao de um veiculo: " << endl;
         cin >> opcao_veiculo;
 
         switch(opcao_veiculo){
@@ -272,10 +336,10 @@ void menuVeiculo(vector<Veiculo> &veiculos) {
             incluirVeiculo(veiculos);
                 break;
             case 2: 
-            //excluirVeiculo(veiculos);
+            excluirVeiculo(veiculos);
                 break;
             case 3:
-            //alterarVeiculo(veiculos);
+            alterarVeiculo(veiculos);
                 break;
             case 4:
             //listarVeiculo(veiculos);
